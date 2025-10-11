@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ONG Doguinho Amigo - Projetos</title>
+  <meta name="description" content="Conheça os projetos sociais da ONG Doguinho Amigo — voluntariado, campanhas e formas de ajudar." />
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#fafafa; color:#222; }
+    header { background:#9c0921; color:white; padding:16px; text-align:center; }
+    nav { background:#111; padding:10px; }
+    nav a { color:#f7b5b5; text-decoration:none; margin:0 8px; display:inline-block; padding:8px 12px; border-radius:6px; font-weight:bold; }
+    main { padding:20px; max-width:1000px; margin:0 auto; }
+    .project { background:white; padding:14px; margin-bottom:12px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+    .thumb { width:100%; height:200px; object-fit:cover; border-radius:6px; margin-top:8px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; }
+    footer { background:#111; color:white; text-align:center; padding:12px; margin-top:20px; }
+    @media (max-width:600px){ .thumb { height:160px; } nav a { display:block; margin:6px 0; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Projetos</h1>
+    <p>Conheça nossos projetos sociais e oportunidades de voluntariado.</p>
+  </header>
+
+  <nav aria-label="Menu principal">
+    <a href="index.html">Início</a>
+    <a href="projetos.html" aria-current="page">Projetos</a>
+    <a href="cadastro.html">Cadastro</a>
+  </nav>
+
+  <main>
+    <section aria-labelledby="lista-projetos">
+      <h2 id="lista-projetos">Lista de Projetos</h2>
+
+      <div class="grid">
+        <article class="project" aria-labelledby="p1">
+          <h3 id="p1">Projeto Adoção Responsável</h3>
+          <p>Resgate, recuperação e adoção de cães. Trabalhamos com castração e acompanhamento pós-adoção.</p>
+          <img class="thumb" src="https://images.unsplash.com/photo-1558788353-f76d92427f16?w=1200" alt="Cães para adoção">
+          <p><strong>Como ajudar:</strong> Doações, voluntariado e compartilhamento nas redes.</p>
+        </article>
+
+        <article class="project" aria-labelledby="p2">
+          <h3 id="p2">Projeto Educação Comunitária</h3>
+          <p>Palestras e oficinas em escolas sobre bem-estar animal e cuidado responsável.</p>
+          <img class="thumb" src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=1200" alt="Atividade comunitária">
+          <p><strong>Como ajudar:</strong> Seja voluntário ou apoie financeiramente a campanha.</p>
+        </article>
+
+        <article class="project" aria-labelledby="p3">
+          <h3 id="p3">Campanha de Vacinação</h3>
+          <p>Campanha anual de vacinação e cuidados básicos para animais em situação de rua.</p>
+          <img class="thumb" src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=1200" alt="Vacinação">
+          <p><strong>Como ajudar:</strong> Contribua com recursos ou ajude na logística.</p>
+        </article>
+      </div>
+
+    </section>
+
+    <section class="project" aria-labelledby="voluntariado">
+      <h2 id="voluntariado">Voluntariado</h2>
+      <p>Os voluntários podem se inscrever para acolhimento temporário (lar de trânsito), suporte em eventos e assistência nos cuidados diários.</p>
+      <p>Para se inscrever, preencha o formulário em <a href="cadastro.html">Cadastro</a>.</p>
+    </section>
+
+    <section class="project" aria-labelledby="doar">
+      <h2 id="doar">Como doar</h2>
+      <p>Oferecemos opções de doação pontual, mensal e campanhas específicas. Toda doação tem prestação de contas e relatórios de transparência.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <small>&copy; 2025 ONG Doguinho Amigo</small>
+  </footer>
+</body>
+</html>

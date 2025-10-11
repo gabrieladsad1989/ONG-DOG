@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ONG Doguinho Amigo - Início</title>
+  <meta name="description" content="ONG Doguinho Amigo - resgate, cuidado e adoção responsável. Saiba quem somos, nossos projetos e como ajudar." />
+  <style>
+     
+    body { font-family: Arial, sans-serif; margin:0; background:#fafafa; color:#222; }
+    header { background:#9c0921; color:white; padding:20px; text-align:center; }
+    nav { background:#111; padding:10px; }
+    nav a { color:#f7b5b5; text-decoration:none; margin:0 8px; display:inline-block; padding:8px 12px; border-radius:6px; font-weight:bold; }
+    nav a:hover { background:#9c0921; color:white; }
+    main { padding:20px; max-width:1000px; margin:0 auto; }
+    .card { background:white; padding:16px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.08); margin-bottom:16px; }
+    .galeria { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+    .galeria img { width:240px; height:160px; object-fit:cover; border-radius:6px; }
+    footer { background:#111; color:white; text-align:center; padding:12px; margin-top:20px; }
+    
+    @media (max-width:600px) {
+      .galeria img { width:100%; height:180px; }
+      nav a { display:block; margin:6px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ONG Doguinho Amigo</h1>
+    <p>Porque cada patinha merece carinho, segurança e um lar.</p>
+  </header>
+
+  <nav aria-label="Menu principal">
+    <a href="index.html">Início</a>
+    <a href="projetos.html">Projetos</a>
+    <a href="cadastro.html">Cadastro</a>
+    <a href="#">Voluntariado</a>
+    <a href="#">Doações</a>
+    <a href="#">Transparência</a>
+  </nav>
+
+  <main>
+    <article class="card" aria-labelledby="quem-somos">
+      <h2 id="quem-somos">Quem somos</h2>
+      <p>A ONG Doguinho Amigo atua no resgate, cuidado e promoção da adoção responsável de cães. Trabalhamos com voluntários, parceiros e doadores para melhorar a vida dos animais.</p>
+    </article>
+
+    <section class="card" aria-labelledby="visao-missao">
+      <h2 id="visao-missao">Missão, Visão e Valores</h2>
+      <ul>
+        <li><strong>Missão:</strong> Proteger e promover o bem-estar animal.</li>
+        <li><strong>Visão:</strong> Um mundo com mais lares amorosos para cães.</li>
+        <li><strong>Valores:</strong> Transparência, empatia e responsabilidade.</li>
+      </ul>
+    </section>
+
+    <section class="card" aria-labelledby="galeria">
+      <h2 id="galeria">Galeria</h2>
+      <div class="galeria" role="list">
+        <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=800" alt="Cachorro feliz" role="listitem">
+        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800" alt="Cachorro marrom" role="listitem">
+        <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?w=800" alt="Cachorro brincando" role="listitem">
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="contato">
+      <h2 id="contato">Contato</h2>
+      <p>Email: <a href="mailto:contato@doguinhoamigo.org">contato@doguinhoamigo.org</a></p>
+      <p>Telefone: <a href="tel:+5511999999999">+55 (11) 99999-9999</a></p>
+      <p>Endereço: Rua das patinhas número 123 - Bairo: Canino</p>
+    </section>
+
+    <section class="card" aria-labelledby="funcs">
+      <h2 id="funcs">O que este site oferece</h2>
+      <p>Esta plataforma permite gerenciar projetos, engajar voluntários, receber doações e publicar transparência e notícias. Veja a página de <a href="projetos.html">Projetos</a> e cadastre-se em <a href="cadastro.html">Cadastro</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; 2025 ONG Doguinho Amigo — Todos os direitos reservados</small>
+  </footer>
+</body>
+</html>
