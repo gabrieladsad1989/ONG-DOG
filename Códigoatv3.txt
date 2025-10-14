@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ONG Doguinho Amigo - Plataforma SPA</title>
+  <meta name="description" content="ONG Doguinho Amigo - plataforma interativa com SPA, validação e armazenamento local." />
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#fafafa; color:#222; }
+    header { background:#9c0921; color:white; padding:20px; text-align:center; }
+    nav { background:#111; padding:10px; display:flex; flex-wrap:wrap; justify-content:center; }
+    nav a { color:#f7b5b5; text-decoration:none; margin:0 8px; display:inline-block; padding:8px 12px; border-radius:6px; font-weight:bold; }
+    nav a:hover, nav a.active { background:#9c0921; color:white; }
+    main { padding:20px; max-width:1000px; margin:0 auto; }
+    .card { background:white; padding:16px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.08); margin-bottom:16px; }
+    .galeria { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+    .galeria img { width:240px; height:160px; object-fit:cover; border-radius:6px; }
+    footer { background:#111; color:white; text-align:center; padding:12px; margin-top:20px; }
+    form input, form textarea { width:100%; padding:8px; margin-bottom:10px; border:1px solid #ccc; border-radius:4px; }
+    form button { background:#9c0921; color:white; border:none; padding:10px 16px; border-radius:6px; cursor:pointer; font-weight:bold; }
+    form button:hover { background:#7a071a; }
+    @media (max-width:600px) {
+      .galeria img { width:100%; height:180px; }
+      nav a { display:block; margin:6px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ONG Doguinho Amigo</h1>
+    <p>Porque cada patinha merece carinho, segurança e um lar.</p>
+  </header>
+  <nav>
+    <a href="#home" class="active">Início</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#cadastro">Cadastro</a>
+  </nav>
+  <main id="conteudo"></main>
+  <footer>
+    <small>&copy; 2025 ONG Doguinho Amigo — Todos os direitos reservados</small>
+  </footer>
+
+  <script>
+    // Templates SPA
+    const templates = {
+      home: `
+        <article class="card">
+          <h2>Quem somos</h2>
+          <p>A ONG Doguinho Amigo atua no resgate, cuidado e promoção da adoção responsável de cães.</p>
+        </article>
+        <section class="card">
+          <h2>Missão, Visão e Valores</h2>
+          <ul>
+            <li><strong>Missão:</strong> Proteger e promover o bem-estar animal.</li>
+            <li><strong>Visão:</strong> Um mundo com mais lares amorosos para cães.</li>
+            <li><strong>Valores:</strong> Transparência, empatia e responsabilidade.</li>
+          </ul>
+        </section>
+        <section class="card">
+          <h2>Galeria</h2>
+          <div class="galeria">
+            <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=800" alt="Cachorro feliz">
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800" alt="Cachorro marrom">
+            <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?w=800" alt="Cachorro brincando">
+          </div>
+        </section>
+      `,
+      projetos: `
+        <section class="card">
+          <h2>Projetos</h2>
+          <p>Conheça nossos principais projetos de resgate e adoção:</p>
+          <ul>
+            <li><strong>Projeto Resgate:</strong> Cuidamos de cães em situação de rua.</li>
+            <li><strong>Projeto Adoção:</strong> Conectamos cães a lares responsáveis.</li>
+            <li><strong>Projeto Conscientização:</strong> Promovemos educação sobre cuidados com animais.</li>
+          </ul>
+        </section>
+      `,
+      cadastro: `
+        <section class="card">
+          <h2>Cadastro de Voluntário</h2>
+          <form id="formCadastro">
+            <label>Nome:</label>
+            <input type="text" id="nome" required />
+            <label>Email:</label>
+            <input type="email" id="email" required />
+            <label>Mensagem:</label>
+            <textarea id="mensagem" rows="4" required></textarea>
+            <button type="submit">Enviar</button>
+          </form>
+          <p id="msg"></p>
+        </section>
+      `
+    };
+
+    const conteudo = document.getElementById('conteudo');
+
+    function carregarPagina(hash) {
+      const rota = hash.replace('#', '') || 'home';
+      conteudo.innerHTML = templates[rota] || templates.home;
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      const ativo = document.querySelector('nav a[href="#' + rota + '"]');
+      if (ativo) ativo.classList.add('active');
+
+      if (rota === 'cadastro') inicializarFormulario();
+    }
+
+    function inicializarFormulario() {
+      const form = document.getElementById('formCadastro');
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const nome = document.getElementById('nome').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const mensagem = document.getElementById('mensagem').value.trim();
+        const msg = document.getElementById('msg');
+
+        if (!nome || !email || !mensagem) {
+          msg.textContent = 'Por favor, preencha todos os campos.';
+          msg.style.color = 'red';
+          return;
+        }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          msg.textContent = 'Email inválido.';
+          msg.style.color = 'red';
+          return;
+        }
+
+        const dados = { nome, email, mensagem, data: new Date().toLocaleString() };
+        const registros = JSON.parse(localStorage.getItem('cadastros') || '[]');
+        registros.push(dados);
+        localStorage.setItem('cadastros', JSON.stringify(registros));
+
+        msg.textContent = 'Cadastro realizado com sucesso!';
+        msg.style.color = 'green';
+        form.reset();
+      });
+    }
+
+    window.addEventListener('hashchange', () => carregarPagina(location.hash));
+    window.addEventListener('load', () => carregarPagina(location.hash));
+  </script>
+</body>
+</html>
