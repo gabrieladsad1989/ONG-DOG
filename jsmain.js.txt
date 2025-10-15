@@ -1,0 +1,26 @@
+js/main.js
+function inicializarAdmin() {
+  const btn = document.getElementById('btnListar');
+  const lista = document.getElementById('listaVoluntarios');
+
+  btn.addEventListener('click', () => {
+    const registros = JSON.parse(localStorage.getItem('cadastros') || '[]');
+    if (!registros.length) {
+      lista.innerHTML = '<p>Nenhum voluntário cadastrado.</p>';
+      return;
+    }
+
+    let html = `<table>
+      <tr><th>Nome</th><th>Email</th><th>Mensagem</th><th>Data</th></tr>`;
+    registros.forEach(v => {
+      html += `<tr><td>${v.nome}</td><td>${v.email}</td><td>${v.mensagem}</td><td>${v.data}</td></tr>`;
+    });
+    html += '</table>';
+    lista.innerHTML = html;
+  });
+
+  const toggleTheme = document.getElementById('toggleTheme');
+  toggleTheme.addEventListener('click', () => {
+    document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+  });
+}

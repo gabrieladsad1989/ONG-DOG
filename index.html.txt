@@ -1,0 +1,33 @@
+ index.html
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ONG Doguinho Amigo - SPA</title>
+  <meta name="description" content="ONG Doguinho Amigo - SPA interativa com validação e acessibilidade." />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="light">
+  <header>
+    <h1>ONG Doguinho Amigo</h1>
+    <p>Porque cada patinha merece carinho, segurança e um lar.</p>
+    <button id="toggleTheme">Alternar Tema</button>
+  </header>
+  <nav>
+    <a href="#home" class="active">Início</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#cadastro">Cadastro</a>
+    <a href="#admin">Admin</a>
+  </nav>
+  <main id="conteudo"></main>
+  <footer>
+    <small>&copy; 2025 ONG Doguinho Amigo — Todos os direitos reservados</small>
+  </footer>
+
+  <script src="js/spa.js" defer></script>
+  <script src="js/validate.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+js/spa.js
+const templates = {
+  home: `
+    <article class="card">
+      <h2 id="quem-somos">Quem somos</h2>
+      <p>A ONG Doguinho Amigo atua no resgate, cuidado e promoção da adoção responsável de cães.</p>
+    </article>
+    <section class="card" aria-labelledby="missao">
+      <h2 id="missao">Missão, Visão e Valores</h2>
+      <ul>
+        <li><strong>Missão:</strong> Proteger e promover o bem-estar animal.</li>
+        <li><strong>Visão:</strong> Um mundo com mais lares amorosos para cães.</li>
+        <li><strong>Valores:</strong> Transparência, empatia e responsabilidade.</li>
+      </ul>
+    </section>
+    <section class="card" aria-labelledby="galeria">
+      <h2 id="galeria">Galeria</h2>
+      <div class="galeria" role="list">
+        <img src="img/dog1.jpg" alt="Cachorro feliz" role="listitem">
+        <img src="img/dog2.jpg" alt="Cachorro marrom" role="listitem">
+        <img src="img/dog3.jpg" alt="Cachorro brincando" role="listitem">
+      </div>
+    </section>
+  `,
+  projetos: `
+    <section class="card">
+      <h2 id="projetos">Projetos</h2>
+      <p>Conheça nossos principais projetos de resgate e adoção:</p>
+      <ul>
+        <li><strong>Projeto Resgate:</strong> Cuidamos de cães em situação de rua.</li>
+        <li><strong>Projeto Adoção:</strong> Conectamos cães a lares responsáveis.</li>
+        <li><strong>Projeto Conscientização:</strong> Promovemos educação sobre cuidados com animais.</li>
+      </ul>
+    </section>
+  `,
+  cadastro: `
+    <section class="card">
+      <h2>Cadastro de Voluntário</h2>
+      <form id="formCadastro">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required aria-required="true" />
+        <label for="email">Email:</label>
+        <input type="email" id="email" required aria-required="true" />
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" rows="4" required aria-required="true"></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+      <p id="msg" role="alert"></p>
+    </section>
+  `,
+  admin: `
+    <section class="card">
+      <h2>Painel Administrativo</h2>
+      <button id="btnListar">Listar Voluntários</button>
+      <div id="listaVoluntarios" aria-live="polite"></div>
+    </section>
+  `
+};
+
+const conteudo = document.getElementById('conteudo');
+
+function carregarPagina(hash) {
+  const rota = hash.replace('#','') || 'home';
+  conteudo.innerHTML = templates[rota] || templates.home;
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  const ativo = document.querySelector(`nav a[href="#${rota}"]`);
+  if (ativo) ativo.classList.add('active');
+
+  if (rota === 'cadastro') inicializarFormulario();
+  if (rota === 'admin') inicializarAdmin();
+}
+
+window.addEventListener('hashchange', () => carregarPagina(location.hash));
+window.addEventListener('load', () => carregarPagina(location.hash));
